@@ -1,138 +1,193 @@
-# 👁️ VISAGE — AI Facial Analytics & Age Estimation Platform
+# 👁️ Visage — AI Facial Analytics & Age Estimation Platform
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.3.0-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2.8-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Firebase](https://img.shields.io/badge/Firebase-Auth%20%26%20DB-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
+<p align="center">
+  <strong>Real-Time Facial Analysis • AI-Powered Insights • Privacy-First Processing</strong>
+</p>
 
-**Visage** is an enterprise-grade AI facial biometric analytics platform. Built with Next.js 16, `@vladmandic/face-api`, Three.js (React Three Fiber), and Tailwind CSS, Visage provides real-time facial age estimation, gender identification, emotion recognition, 68-point facial landmark detection, and interactive 3D holographic rendering.
+<p align="center">
+  <a href="https://visage-web.netlify.app">
+    <img src="https://img.shields.io/badge/Live%20Demo-Visage-00F2FE?style=for-the-badge" alt="Live Demo">
+  </a>
+  <a href="https://github.com/msashank2007/Visage">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub">
+  </a>
+</p>
 
----
-
-## 🏛️ Project Architecture & Format Structure
-
-```
-visage/
-├── public/                     # Static assets & client-accessible resources
-│   ├── favicon.ico
-│   ├── manifest.json           # PWA web manifest definition
-│   └── models/                 # Pre-trained face-api Neural Network models
-│       ├── ssd_mobilenetv1_model-*
-│       ├── face_landmark_68_model-*
-│       ├── face_expression_model-*
-│       └── age_gender_model-*
-├── scripts/                    # Automation and utility scripts
-├── src/
-│   ├── app/                    # Next.js App Router pages & API routes
-│   │   ├── layout.tsx          # Root layout with providers & global fonts
-│   │   ├── page.tsx            # Hero Landing Page & Features overview
-│   │   ├── globals.css         # Global design system tokens & custom utilities
-│   │   ├── scan/               # Live Real-time Camera & File Upload scanner
-│   │   │   └── page.tsx
-│   │   ├── history/            # Biometric scan history & analytics log
-│   │   │   └── page.tsx
-│   │   ├── login/              # Secure User Authentication (Sign In)
-│   │   │   └── page.tsx
-│   │   ├── signup/             # User Account Creation
-│   │   │   └── page.tsx
-│   │   └── settings/           # User preferences & model configuration
-│   │       └── page.tsx
-│   ├── components/             # Modular React UI Components
-│   │   ├── 3d/                 # Three.js / R3F Canvas components
-│   │   │   └── HologramFace.tsx# 3D interactive holographic face point cloud
-│   │   ├── auth/               # Auth transitions & biometric splash screens
-│   │   │   └── PostLoginTransition.tsx
-│   │   ├── layout/             # Application structural wrappers
-│   │   │   ├── Navbar.tsx      # Global responsive navigation bar
-│   │   │   ├── Footer.tsx      # Enterprise site footer
-│   │   │   └── ProtectedRoute.tsx # Auth protection route wrapper
-│   │   └── scan/               # Scanner specific UI elements
-│   │       ├── CameraFeed.tsx  # WebRTC live video canvas analyzer
-│   │       ├── ImageUploader.tsx# Drag-and-drop image file analyzer
-│   │       ├── FaceCard.tsx    # Biometric breakdown & detail card
-│   │       ├── EmotionChart.tsx# Visual emotion confidence breakdown
-│   │       └── ScanLoader.tsx  # Neural network initialization loader
-│   ├── context/                # React Global State Providers
-│   │   ├── AuthContext.tsx     # Firebase Authentication state manager
-│   │   └── ThemeContext.tsx    # Light / Dark / Cyberpunk theme switcher
-│   ├── lib/                    # Core utilities & external integrations
-│   │   ├── faceApi.ts          # Neural network loader & canvas drawing logic
-│   │   ├── firebase.ts         # Firebase App initialization & SDK instances
-│   │   └── scanStorage.ts      # IndexedDB / Local Storage scan persistence
-│   └── types/                  # Shared TypeScript interfaces & types
-│       └── index.ts            # ScanResult, FaceDetection, User Profile types
-├── AGENTS.md                   # Next.js system agent guidelines & rules
-├── APP_GUIDELINES.md           # Master guide for converting to Native Mobile & App Packaging
-├── eslint.config.mjs           # ESLint configuration
-├── next.config.ts              # Next.js compiler & webpack configuration
-├── package.json                # Project dependencies & scripts
-├── postcss.config.mjs          # PostCSS configuration for TailwindCSS v4
-└── tsconfig.json               # Strict TypeScript configuration
-```
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.3.0-black?style=flat-square&logo=next.js" alt="Next.js">
+  <img src="https://img.shields.io/badge/React-19.2.8-61DAFB?style=flat-square&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=flat-square&logo=tailwindcss" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Firebase-Auth%20%26%20Database-FFCA28?style=flat-square&logo=firebase" alt="Firebase">
+</p>
 
 ---
 
-## ⚡ Key Features
+## 🌐 Live Demo
 
-- 🎯 **Real-time Age & Gender Estimation**: Sub-second client-side inference using SSD MobileNet V1 & ResNet models.
-- 🎭 **Emotion Confidence Analysis**: 7 core emotion categories (Happy, Sad, Angry, Surprised, Fearful, Disgusted, Neutral).
-- 🌌 **3D Holographic Visualizer**: Cyberpunk-style interactive 3D point cloud mesh rendering real-time landmarks using Three.js and Framer Motion.
-- 📊 **Scan History & Analytics**: Local and Firebase storage for history tracking and export capabilities.
-- 📱 **Cross-Platform Readiness**: Designed for seamless conversion into PWA (Progressive Web App) and Native Mobile Apps via Capacitor.
-- 🎨 **Executive Cyberpunk Aesthetics**: Custom dark-mode neon glassmorphism UI with smooth spring micro-animations.
+**Try Visage online:**
 
----
+👉 https://visage-web.netlify.app
 
-## 🛠️ Getting Started
+**Source Code:**
 
-### 1. Prerequisites
-- **Node.js**: `v18.17.0` or higher
-- **npm** or **pnpm** or **yarn**
-
-### 2. Installation
-Clone the repository and install project dependencies:
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/visage.git
-
-# Navigate into project directory
-cd visage
-
-# Install dependencies
-npm install
-```
-
-### 3. Environment Variables
-Create a `.env.local` file in the root directory and configure Firebase credentials:
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-```
-
-### 4. Running Locally
-Start the Next.js development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+👉 https://github.com/msashank2007/Visage
 
 ---
 
-## 📱 App Conversion & Mobile Packaging
+## 📌 Overview
 
-For comprehensive instructions on transforming Visage into a native mobile app (iOS / Android) or Progressive Web App (PWA), view the [APP_GUIDELINES.md](file:///d:/antigravity/visage/APP_GUIDELINES.md) document.
+**Visage** is an AI-powered facial analytics platform designed for real-time facial analysis through a modern web interface.
+
+The application combines browser-based computer vision, interactive visualization, authentication, scan history, and responsive UI components into a unified facial analytics experience.
+
+Visage uses `@vladmandic/face-api` for facial analysis and Three.js / React Three Fiber for interactive 3D visualization.
+
+### Core capabilities include:
+
+- Real-time face detection
+- Age estimation
+- Gender estimation with confidence
+- Facial expression / emotion analysis
+- 68-point facial landmark detection
+- Multiple-face analysis
+- Live camera analysis
+- Image upload analysis
+- Facial analytics result cards
+- Emotion confidence visualization
+- Scan history
+- Firebase authentication and database integration
+- Interactive 3D holographic facial visualization
+- Responsive dark glassmorphism interface
+- PWA and native mobile application readiness
 
 ---
 
-## 📄 License & Standards
+# ✨ Key Features
 
-This project follows enterprise coding standards, strict TypeScript type checking, modular component architecture, and responsive UI design rules.
+## 🎯 Real-Time Facial Analysis
+
+Visage can analyze faces from a live camera feed and provide facial analytics through client-side AI models.
+
+The analysis includes:
+
+- Face detection
+- Estimated age
+- Estimated gender
+- Gender confidence
+- Facial expressions
+- Facial landmarks
+
+---
+
+## 🎭 Emotion Analysis
+
+Visage supports seven core facial expression categories:
+
+| Emotion | Description |
+|---|---|
+| 😊 Happy | Happiness expression |
+| 😢 Sad | Sadness expression |
+| 😠 Angry | Anger expression |
+| 😲 Surprised | Surprise expression |
+| 😨 Fearful | Fear expression |
+| 🤢 Disgusted | Disgust expression |
+| 😐 Neutral | Neutral expression |
+
+Emotion confidence values can be displayed through the application's visual analytics interface.
+
+---
+
+## 👤 68-Point Facial Landmarks
+
+The facial landmark model detects **68 facial landmark points**.
+
+These landmarks can be used to represent important facial regions such as:
+
+- Eyes
+- Eyebrows
+- Nose
+- Mouth
+- Jawline
+- Facial contour
+
+The landmark data also supports the application's visual facial representation.
+
+---
+
+## 👥 Multi-Face Detection
+
+Visage is designed to analyze multiple faces within the same image or camera frame.
+
+Each detected face can be presented with its own analytical information, including:
+
+- Estimated age
+- Gender
+- Confidence
+- Emotion data
+- Facial landmarks
+
+---
+
+## 📷 Camera & Image Upload
+
+Visage supports two primary analysis workflows:
+
+### Live Camera
+
+Use the device camera to perform real-time facial analysis.
+
+### Image Upload
+
+Upload an image through the application's image uploader and analyze the detected faces.
+
+---
+
+## 🌌 3D Holographic Visualization
+
+Visage includes an interactive 3D visual experience powered by:
+
+- Three.js
+- React Three Fiber
+- React Three Drei
+
+The application includes a holographic facial visualization concept based on facial landmark information.
+
+This provides a futuristic visualization layer on top of the underlying facial analytics.
+
+---
+
+## 📊 Scan History
+
+Analyzed scans can be stored and reviewed through the application's history system.
+
+The history interface supports viewing previous scan records and accessing detailed scan information.
+
+Storage functionality is implemented through the application's scan storage utilities and Firebase integration.
+
+---
+
+## 🔐 Authentication
+
+Visage includes authentication-related pages and application state management.
+
+The project includes:
+
+- Login
+- Signup
+- Protected routes
+- Firebase Authentication integration
+- Authentication state management
+
+Authenticated users can access protected application functionality.
+
+---
+
+## ☁️ Firebase Integration
+
+Firebase is used for application services including authentication and database functionality.
+
+The project includes a dedicated Firebase integration layer:
+
+```text
+src/lib/firebase.ts
